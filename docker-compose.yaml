@@ -1,0 +1,27 @@
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    volumes:
+      - ./backend:/app
+    environment:
+      DB_USER: root
+      DB_HOST: localhost
+      DB_PASSWORD: my_strong_passw0rd
+      DB_NAME: db
+    ports:
+      - "8000:8000"
+  mysql:
+    image: mysql:8.0.27
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: my_strong_passw0rd
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    ports:
+      - "3306:3306"
+
