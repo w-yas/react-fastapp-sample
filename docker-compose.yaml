@@ -2,13 +2,13 @@
 services:
   api:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     volumes:
-      - ./backend:/app
+      - ./backend/api:/app/api
     environment:
       DB_USER: root
-      DB_HOST: localhost
+      DB_HOST: mysql
       DB_PASSWORD: my_strong_passw0rd
       DB_NAME: db
     ports:
